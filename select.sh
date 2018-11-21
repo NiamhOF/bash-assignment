@@ -16,7 +16,7 @@ function checkColumnsAreValid() {
 			result=0
 		fi
 	done
-echo $result	
+        echo $result	
 }
 
 if [ "$#" -gt 3 ]; then
@@ -32,7 +32,20 @@ elif [ ! -e "$databasedir$database/$table" ]; then
 	exit 2
 
 elif [ $(checkColumnsAreValid "$columnnew" "$columnnum") -eq 0 ]; then
-	echo "Error: column does not exist"
+	echo "Error: column does not exist" >&2
 	exit 2
 
+else 
+	print_all=$(tail -n +2 "$databasedir$database/$table")
+	echo "start_result" >&2
+	if [ "$#" -eq 2 ]; then
+		echo "$print_all"
+		exit 0
+	else
+		echo "$print_all" | cut -d , -f"$column"
+		exit 0
+	echo "end_result" >&2
+		
+	fi
+	
 fi

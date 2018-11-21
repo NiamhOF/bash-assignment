@@ -24,7 +24,9 @@ elif [ "$columnnew" -ne "$columnnum" ]; then
 	exit 1
 
 else
+	./P.sh "$databasedir$database"
         echo "$column" >> "$databasedir$database/$table"
         echo "OK. Table created" >&2
+	./V.sh "$databasedir$database"
 	exit 0
 fi
