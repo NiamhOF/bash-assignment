@@ -21,7 +21,7 @@ elif [ -e "$databasedir$database/$table" ]; then
 else
 	./P.sh "$databasedir$database"
 	echo "$columns" > "$databasedir$database/$table" 
-	echo "OK. Table created">&2
+	echo "OK. Table created" >&2
 	./V.sh "$databasedir$database"
 	exit 0
 fi

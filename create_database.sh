@@ -22,7 +22,6 @@ else
 	else
 		mkdir "$database"
 		echo "OK: database created" >&2
-		echo $database
 		./V.sh "$database"
 		exit 0		
 	fi
